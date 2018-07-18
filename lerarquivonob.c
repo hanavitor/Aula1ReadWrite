@@ -28,7 +28,7 @@ int main (){
         fgets(lista[i].nome, 100, fp);
         fgets(lista[i].telefone, 50, fp);
         fgets(lista[i].endereco.rua, 100, fp);
-        fscanf(fp, " %d%*c", &lista[i].endereco.num);
+        fscanf(fp, "%d%*c", &lista[i].endereco.num);
     }
 
     printf("Lista das pessoas:\n");
