@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #define MAX 5
 
 typedef struct endereco{
@@ -15,32 +14,29 @@ typedef struct pessoa{
 }tPessoa;
 
 int main (){
-
+    
     tPessoa lista[MAX];
     FILE *fp;
-    fp = fopen("dados.txt", "wb");
+    fp = fopen("dados.txt", "rb");
 
     if(fp<0){
         printf("Erro ao abrir o arquivo");
         return 1;
     }
 
-    for(int i = 0; i<MAX; i++){
+    /*for(int i = 0; i<MAX; i++){
         printf("Digite o nome: ");
-        fgets(lista[i].nome, 100, stdin);
-        lista[i].nome[strcspn(lista[i].nome, "\n")] = 0;
+        gets(lista[i].nome);
         printf("Digite o telefone: ");
-        fgets(lista[i].telefone, 50, stdin);
-        lista[i].telefone[strcspn(lista[i].telefone, "\n")] = 0;
+        gets(lista[i].telefone);
         printf("Digite a rua: ");
-        fgets(lista[i].endereco.rua, 100, stdin);
-        lista[i].endereco.rua[strcspn(lista[i].endereco.rua, "\n")] = 0;
+        gets(lista[i].endereco.rua);
         printf("Digite o numero: ");
         scanf("%d", &lista[i].endereco.num);
         getchar();
-    }
+    }*/
 
-    fwrite(lista, sizeof(tPessoa), MAX, fp);
+    fread(lista, sizeof(tPessoa), MAX, fp);
 
     printf("Lista das pessoas:\n");
     for(int i = 0; i<MAX;i++){
@@ -49,7 +45,7 @@ int main (){
         printf("Rua: %s\n", lista[i].endereco.rua);
         printf("Numuro: %d\n", lista[i].endereco.num);
     }
-
+        
 
     return 0;
 }
