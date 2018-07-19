@@ -5,7 +5,7 @@
 
 typedef struct endereco{
     char rua[100];
-    int num;
+    char num[50];
 }tEndereco;
 
 typedef struct pessoa{
@@ -36,8 +36,8 @@ int main (){
         fgets(lista[i].endereco.rua, 100, stdin);
         lista[i].endereco.rua[strcspn(lista[i].endereco.rua, "\n")] = 0;
         printf("Digite o numero: ");
-        scanf("%d", &lista[i].endereco.num);
-        getchar();
+        fgets(lista[i].endereco.num, 50, stdin);
+        lista[i].endereco.num[strcspn(lista[i].endereco.num, "\n")] = 0;
     }
 
     fwrite(lista, sizeof(tPessoa), MAX, fp);
@@ -47,7 +47,7 @@ int main (){
         printf("Nome: %s\n", lista[i].nome);
         printf("Telefone: %s\n", lista[i].telefone);
         printf("Rua: %s\n", lista[i].endereco.rua);
-        printf("Numuro: %d\n", lista[i].endereco.num);
+        printf("Numuro: %s\n", lista[i].endereco.num);
     }
 
 

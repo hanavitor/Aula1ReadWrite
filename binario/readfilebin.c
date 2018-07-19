@@ -4,7 +4,7 @@
 
 typedef struct endereco{
     char rua[100];
-    int num;
+    char num[50];
 }tEndereco;
 
 typedef struct pessoa{
@@ -43,7 +43,7 @@ int main (){
         printf("Nome: %s\n", lista[i].nome);
         printf("Telefone: %s\n", lista[i].telefone);
         printf("Rua: %s\n", lista[i].endereco.rua);
-        printf("Numuro: %d\n", lista[i].endereco.num);
+        printf("Numuro: %s\n", lista[i].endereco.num);
     }
         
 
