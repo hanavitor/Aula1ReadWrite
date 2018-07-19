@@ -43,7 +43,6 @@ int main (){
         printf("Rua: %s\n", lista[i].endereco.rua);
         printf("Numero: %s\n", lista[i].endereco.num);
     }
-        
 
     return 0;
 }
