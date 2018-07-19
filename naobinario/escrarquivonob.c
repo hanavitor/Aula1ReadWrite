@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #define MAX 5
 
 typedef struct endereco{
@@ -17,26 +18,27 @@ int main (){
     
     tPessoa lista[MAX];
     FILE *fp;
-    fp = fopen("dados.txt", "rb");
+    fp = fopen("dadoslegivel.txt", "w");
 
     if(fp<0){
         printf("Erro ao abrir o arquivo");
         return 1;
     }
 
-    /*for(int i = 0; i<MAX; i++){
+    for(int i = 0; i<MAX; i++){
         printf("Digite o nome: ");
-        gets(lista[i].nome);
+        fgets(lista[i].nome, 100, stdin);
+        lista[i].nome[strcspn(lista[i].nome, "\n")] = 0;
         printf("Digite o telefone: ");
-        gets(lista[i].telefone);
+        fgets(lista[i].telefone, 50, stdin);
+        lista[i].telefone[strcspn(lista[i].telefone, "\n")] = 0;
         printf("Digite a rua: ");
-        gets(lista[i].endereco.rua);
+        fgets(lista[i].endereco.rua, 100, stdin);
+        lista[i].endereco.rua[strcspn(lista[i].endereco.rua, "\n")] = 0;
         printf("Digite o numero: ");
         scanf("%d", &lista[i].endereco.num);
         getchar();
-    }*/
-
-    fread(lista, sizeof(tPessoa), MAX, fp);
+    }
 
     printf("Lista das pessoas:\n");
     for(int i = 0; i<MAX;i++){
@@ -44,6 +46,10 @@ int main (){
         printf("Telefone: %s\n", lista[i].telefone);
         printf("Rua: %s\n", lista[i].endereco.rua);
         printf("Numuro: %d\n", lista[i].endereco.num);
+        fprintf(fp, "%s\n", lista[i].nome);
+        fprintf(fp, "%s\n", lista[i].telefone);
+        fprintf(fp, "%s\n", lista[i].endereco.rua);
+        fprintf(fp, "%d\n", lista[i].endereco.num);
     }
         
 
